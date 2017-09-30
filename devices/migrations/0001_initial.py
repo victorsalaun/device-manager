@@ -15,27 +15,27 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'id', models.AutoField(
-                        auto_created=True, primary_key=True, serialize=False, verbose_name='ID'
+                        auto_created=True, primary_key=True, serialize=False, max_length=200, verbose_name='ID'
                     )
                 ),
                 (
                     'os', models.CharField(
-                        db_index=True, verbose_name='OS'
+                        db_index=True, max_length=200, verbose_name='OS'
                     )
                 ),
                 (
-                    'osVersion', models.CharField(
-                        verbose_name='OS Version'
+                    'os_version', models.CharField(
+                        max_length=200, verbose_name='OS Version'
                     )
                 ),
                 (
                     'brand', models.CharField(
-                        verbose_name='Brand'
+                        max_length=200, verbose_name='Brand'
                     )
                 ),
                 (
                     'name', models.CharField(
-                        verbose_name='Name'
+                        max_length=200, verbose_name='Name'
                     )
                 ),
             ],

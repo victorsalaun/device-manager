@@ -1,16 +1,16 @@
 from __future__ import absolute_import, unicode_literals
 
-from rest_framework.renderers import TemplateHTMLRenderer
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.generics import ListCreateAPIView
 
 from devices.models import Device
+from devices.serializers import DeviceSerializer
 
 
-class DeviceListView(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'devices/device_list.html'
+class DeviceListCreateAPIView(ListCreateAPIView):
+    serializer_class = DeviceSerializer
 
-    def get(self, request):
-        queryset = Device.objects.all()
-        return Response({'devices': queryset})
+    def get_queryset(self):
+        return Device.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save()
