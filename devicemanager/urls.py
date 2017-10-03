@@ -17,10 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 api_urls = [
-    url(r'^devices/', include('devices.urls', namespace='devices')),
+    url(r'', include('devices.urls', namespace='devices')),
 ]
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(api_urls)),
+    url(r'', include('devices.urls')),
+    # url(r'/', include(api_urls)),
+    url(r'openid/', include('djangooidc.urls')),
 ]

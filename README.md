@@ -13,11 +13,19 @@ Very simple Django based app using  Django Rest Framework
 
 ## Init
 
+**Keycloak**
+
+Set Keycloak realm 'django':
+
+* Client ID: device_manager
+* Root URL: http://localhost:8000
+* Valid Redirect URIs: /openid/callback/*
+* Web Origins: *
+
+
+    py manage.py makemigrations bossoidc
+
     python manage.py migrate
-
-In order to create admin user:
-
-    python manager.py createsuperuser
 
 ## Launch
 
@@ -26,3 +34,5 @@ In order to create admin user:
 [Admin page](http://127.0.0.1:8000/admin/)
 
 [Api page](http://127.0.0.1:8000/api/devices/)
+
+[Main page](http://127.0.0.1:8000/)

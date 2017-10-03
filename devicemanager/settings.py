@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bossoidc',
+    'djangooidc',
     'rest_framework',
     'devices.apps.DevicesApp',
 ]
@@ -97,6 +99,19 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'bossoidc.backend.OpenIdConnectBackend',
+)
+
+auth_uri = "http://localhost:8080/auth/realms/django"
+client_id = "device_manager"
+public_uri = "http://localhost:8000"
+
+from bossoidc.settings import *
+
+configure_oidc(auth_uri, client_id, public_uri)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
